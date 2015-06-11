@@ -1,7 +1,6 @@
-package msweino.mychess;
+package msweino.mychess.Piece;
 
 
-import msweino.mychess.Piece;
 /**my
  * Created by USER on 2015/5/31.
  */

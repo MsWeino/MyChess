@@ -1,4 +1,4 @@
-package msweino.mychess;
+package msweino.mychess.Piece;
 
 /**
  * Created by USER on 2015/6/8.

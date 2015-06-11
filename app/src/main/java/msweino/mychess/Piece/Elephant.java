@@ -1,5 +1,5 @@
-package msweino.mychess;
-import msweino.mychess.Chessboard;
+package msweino.mychess.Piece;
+
 /**
  * 相
  */

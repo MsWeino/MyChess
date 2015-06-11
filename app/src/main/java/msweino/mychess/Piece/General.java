@@ -1,4 +1,4 @@
-package msweino.mychess;
+package msweino.mychess.Piece;
 
 /**
  * 帥
