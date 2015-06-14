@@ -1,4 +1,4 @@
-package msweino.mychess.Piece;
+package msweino.mychess;
 
 /**
  * 馬
@@ -14,5 +14,9 @@ public class Horse extends Piece{
            ((endY==inY-2)&(endX==inX+1|endX==inX-1)&(chessboard[inX][inY-1]==null)))
         {errCode= true;}
         return errCode;
+    }
+    @Override
+    public String toString(){
+        return "Horse";
     }
 }

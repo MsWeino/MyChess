@@ -1,7 +1,7 @@
-package msweino.mychess.Piece;
+package msweino.mychess;
 
 /**
- * Created by USER on 2015/6/8.
+ * 炮
  */
 public class Cannon extends Piece {
 
@@ -54,5 +54,9 @@ public class Cannon extends Piece {
         }
         if (check==1){ errCode= true;}
         return errCode;
+    }
+    @Override
+    public String toString(){
+        return "Cannon";
     }
 }

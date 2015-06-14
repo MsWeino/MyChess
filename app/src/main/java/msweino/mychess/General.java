@@ -1,4 +1,4 @@
-package msweino.mychess.Piece;
+package msweino.mychess;
 
 /**
  * 帥
@@ -9,7 +9,7 @@ public class General extends Piece{
     public boolean Rule(int inX,int inY,int endX,int endY,Piece[][] chessboard) //規則
     {
         boolean errCode=false;
-        if(getPlayer()) {
+        if(getFactions()) {
             if (!(endX<3 | endX>5 | endY < 7))//區域限制
             {
                 if((endX==inX)|(endY==inY)) {
@@ -28,5 +28,9 @@ public class General extends Piece{
             }
         }
         return errCode;
+    }
+    @Override
+    public String toString(){
+        return "General";
     }
 }

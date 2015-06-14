@@ -901,6 +901,17 @@
         android:layout_below="@+id/linLayoutY0"
         android:layout_alignParentStart="true" >
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/butGame" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/butNewGame" />
     </LinearLayout>
 
     <TextView

@@ -1,4 +1,4 @@
-package msweino.mychess.Piece;
+package msweino.mychess;
 
 /**
  * 車
@@ -51,5 +51,9 @@ public class Chariot extends Piece{
             }
         if (check==0) { errCode= true;}
         return errCode;
+    }
+    @Override
+    public String toString(){
+        return "Chariot";
     }
 }

@@ -1,7 +1,7 @@
-package msweino.mychess.Piece;
+package msweino.mychess;
 
 /**
- * Created by USER on 2015/6/8.
+ * 兵
  */
 public class Soldier extends Piece{
     @Override
@@ -9,7 +9,7 @@ public class Soldier extends Piece{
     {
 
         boolean errCode = false;
-        if(getPlayer()) {
+        if(getFactions()) {
             if (inY>4)//己方陣地
             {
                 if((endX==inX)|(endY==inY-1))
@@ -37,5 +37,9 @@ public class Soldier extends Piece{
             }
         }
         return errCode;
+    }
+    @Override
+    public String toString(){
+        return "Soldier"+this;
     }
 }

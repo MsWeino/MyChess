@@ -1,4 +1,4 @@
-package msweino.mychess.Piece;
+package msweino.mychess;
 
 /**
  * 相
@@ -9,7 +9,7 @@ public class Elephant extends Piece {
     {
 
         boolean errCode=false;
-        if(getPlayer()) {
+        if(getFactions()) {
             if (endY > 4)//區域限制
             {
                 if ((((endX == inX + 2) & (endY == inY + 2)) & (chessboard[inX + 1][inY + 1] == null)) ||
@@ -30,5 +30,9 @@ public class Elephant extends Piece {
             }
         }
         return errCode;
+    }
+    @Override
+    public String toString(){
+        return "Elephant";
     }
 }
