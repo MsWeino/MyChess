@@ -18,7 +18,7 @@ public class MainActivity extends Activity {
     Chessboard chessboard;
     Button butGame,butNewGame;
     ImageButton[] iBuXY = new ImageButton[90];
-    boolean newChessboard=false;
+    boolean newChessboard=true,butGameKEY=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +33,8 @@ public class MainActivity extends Activity {
     }
     void set()
     {
+
+        butNewGame.setText("開啟新局");
         if(chessboard.fettle())
         {
             butGame.setText("STOP");
@@ -83,33 +85,49 @@ public class MainActivity extends Activity {
 
         switch (v.getId()) {
             case R.id.butGame:
-                //                    tVSystem.setText(chessboard.toString(0,0))
+                if(butGameKEY) {
+                    if (chessboard.fettle()) {
+                        chessboard.stop();//暫停
+                        tVSystem.setText("暫停");
+                        butGame.setText("START");
 
-                     if(chessboard.fettle())
-                         {
-                            chessboard.stop();//暫停
-                             tVSystem.setText("暫停");
-                             butGame.setText("START");
-
-                         }
-                         else
-                        {
-                             chessboard.run();//啟動
-                            tVSystem.setText("啟動");
-                            butGame.setText("STOP");
-                        }
-
+                    } else {
+                        chessboard.run();//啟動
+                        tVSystem.setText("啟動");
+                        butGame.setText("STOP");
+                    }
+                }
                 break;
-            case R.id.butNewGame:
-                chessboard.newGame();
+
+            case R.id.butNewGame:   //新遊戲 OR 認輸
+                if(newChessboard) {
+                    chessboard.start();
+                    butGame.setText("START");
+                    butNewGame.setText("棄子投降");
+                    newChessboard=false;
+                    chessboard.newGame();
+                    butGameKEY=true;
+                }
+                else
+                {
+                    chessboard.stop();
+                    butNewGame.setText("開啟新局");
+                    newChessboard=true;
+                    butGameKEY=false;
+                }
+
                 show();
+
             break;
            default:
                if(chessboard.fettle()) {//檢查遊戲狀態
+
                    for (int index = 0; index < 90; index++) {
                        if (MyData.butXY_id[index] == v.getId()) {
-                           String TXT = "X = " + index % 9 + "Y = " + index / 9;
+                           int BodyX=index % 9, BodyY=index / 9;
+                           String TXT = "X = " + BodyX + "Y = " + BodyY;
                            tVSystem.setText(TXT);
+                           Body(BodyX,BodyY);
                        }
                    }
                }
@@ -117,6 +135,10 @@ public class MainActivity extends Activity {
 
         }
     }
+        void Body(int x,int y)
+        {
+//            chessboard.runGame(x,y);
+        }
 };
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
