@@ -27,6 +27,10 @@ public class General extends Piece{
                 }
             }
         }
+
+        //不可自殺
+        if(chessboard[endX][endY]!=null)
+        {if(chessboard[endX][endY].getFactions()==chessboard[inX][inY].getFactions()){errCode=false;}}
         return errCode;
     }
     @Override

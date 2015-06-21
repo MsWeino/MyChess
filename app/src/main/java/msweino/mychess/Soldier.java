@@ -38,6 +38,9 @@ public class Soldier extends Piece{
                 {errCode= true;}
             }
         }
+        //不可自殺
+        if(chessboard[endX][endY]!=null)
+        {if(chessboard[endX][endY].getFactions()==chessboard[inX][inY].getFactions()){errCode=false;}}
         return errCode;
     }
     @Override

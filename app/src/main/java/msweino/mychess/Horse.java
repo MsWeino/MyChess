@@ -13,6 +13,10 @@ public class Horse extends Piece{
            ((endY==inY+2)&(endX==inX+1|endX==inX-1)&(chessboard[inX][inY+1]==null))||
            ((endY==inY-2)&(endX==inX+1|endX==inX-1)&(chessboard[inX][inY-1]==null)))
         {errCode= true;}
+
+        //不可自殺
+        if(chessboard[endX][endY]!=null)
+        {if(chessboard[endX][endY].getFactions()==chessboard[inX][inY].getFactions()){errCode=false;}}
         return errCode;
     }
     @Override
