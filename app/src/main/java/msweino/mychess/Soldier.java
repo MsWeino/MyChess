@@ -12,13 +12,14 @@ public class Soldier extends Piece{
         if(getFactions()) {
             if (inY>4)//己方陣地
             {
-                if((endX==inX)|(endY==inY-1))
+                if((endX==inX)&&(endY==inY-1))
                 {errCode= true;}
             }
             else   //深入敵營
             {
-                if(((endX==inX)&(endY==inY-1))||
-                  (endY==inY)&(endX==inX+1|endX==inX-1))
+                if((endX==inX)&&(endY==inY-1)||
+                   (endX==inX-1)&&(endY==inY)||
+                   (endX==inX+1)&&(endY==inY))
                 {errCode= true;}
             }
         }
@@ -26,13 +27,14 @@ public class Soldier extends Piece{
         {
             if (inY<5)//己方陣地
             {
-                if((endX==inX)|(endY==inY+1))
+                if((endX==inX)&&(endY==inY+1))
                 {errCode= true;}
             }
             else   //深入敵營
             {
-                if(((endX==inX)&(endY==inY+1))||
-                  (endY==inY)&(endX==inX+1|endX==inX-1))
+                if((endX==inX)&&(endY==inY+1)||
+                   (endX==inX-1)&&(endY==inY)||
+                    (endX==inX+1)&&(endY==inY))
                 {errCode= true;}
             }
         }

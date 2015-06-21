@@ -6,6 +6,7 @@ package msweino.mychess;
 public class Advisor extends Piece {
 
 
+
     @Override
     public boolean Rule(int inX,int inY,int endX,int endY,Piece[][] chessboard) //規則
     {
