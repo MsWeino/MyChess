@@ -77,7 +77,6 @@ public class Chessboard {
             case 3:      //移動
                 if(inCoordinateX!=CoordinateX||inCoordinateY!=CoordinateY)  // 起始與結束相同座標 不動作
                 {
-
                     if(chessboard[inCoordinateX][inCoordinateY].Rule(inCoordinateX,inCoordinateY,CoordinateX,CoordinateY,chessboard))
                     {
                         movePiece(CoordinateX,CoordinateY);

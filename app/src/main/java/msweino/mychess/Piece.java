@@ -6,7 +6,7 @@ package msweino.mychess;
 public class Piece implements IPiece{
     private int image;
     private int weights;  // 權重
-    private boolean factions; //派系
+    private boolean factions; //陣營
     public boolean Rule(int inX,int Y,int endX,int endY,Piece[][] chessboard) //規則
     {   return true;}
     public void show()
