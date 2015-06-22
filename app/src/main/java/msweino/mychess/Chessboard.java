@@ -21,7 +21,7 @@ public class Chessboard {
             {null,null,null,null,null,null,null,null,null,null,null}};
     int inCoordinateX=999,inCoordinateY=999;
   //  private  boolean runGame=false; //停止遊戲
-    private int player=0; //玩家  0: 無玩家  1:a玩家 2:b玩家 3:ai
+    private boolean player=true; //true=黑方  false =紅方
     private boolean fettle=false;//狀態
 
     public void setPiece(int X,int Y,Piece piece)
@@ -45,7 +45,7 @@ public class Chessboard {
      return fettle;
     }
     public void clear(){
-        this.player=0;
+        this.player=true;
         stop();
         inCoordinateX=999;
         inCoordinateY=999;
@@ -68,17 +68,36 @@ public class Chessboard {
             case 1:     //不動作
                 break;
             case 2:     //設定inCoordinateX- inCoordinateY
-                inCoordinateX=CoordinateX;
-                inCoordinateY=CoordinateY;
+                if(player^chessboard[CoordinateX][CoordinateY].getFactions()) //陣營判斷
+                {
+                    inCoordinateX = CoordinateX;
+                    inCoordinateY = CoordinateY;
+                }
                 break;
-            case 3:     //清空inCoordinateX ,inCoordinateY;
-            case 4:     //移動
+            case 3:      //移動
                 if(inCoordinateX!=CoordinateX||inCoordinateY!=CoordinateY)  // 起始與結束相同座標 不動作
                 {
-                   if(chessboard[inCoordinateX][inCoordinateY].Rule(inCoordinateX,inCoordinateY,CoordinateX,CoordinateY,chessboard))
-                   {
+
+                    if(chessboard[inCoordinateX][inCoordinateY].Rule(inCoordinateX,inCoordinateY,CoordinateX,CoordinateY,chessboard))
+                    {
                         movePiece(CoordinateX,CoordinateY);
-                   }
+                    }
+                }
+                break;
+            case 4:     //移動 but兩子為同陣營的話不移動,替換起始座標
+                if(chessboard[inCoordinateX][inCoordinateY].getFactions()==chessboard[CoordinateX][CoordinateY].getFactions())//同陣營所以變更選取的旗子
+                {
+                    inCoordinateX=CoordinateX;
+                    inCoordinateY=CoordinateY;
+                }
+                else
+                {
+                    if (inCoordinateX != CoordinateX || inCoordinateY != CoordinateY)  // 起始與結束相同座標 不動作
+                    {
+                        if (chessboard[inCoordinateX][inCoordinateY].Rule(inCoordinateX, inCoordinateY, CoordinateX, CoordinateY, chessboard)) {
+                            movePiece(CoordinateX, CoordinateY);
+                        }
+                    }
                 }
                 break;
 
@@ -170,14 +189,14 @@ public class Chessboard {
         int action=0;
         if(inCoordinateX==999)
         {
-            if(chessboard[CoordinateX][CoordinateY]==null)  {action=1;}
-            else                                          {action=2;}
-        }
+            if(chessboard[CoordinateX][CoordinateY]==null)  {action=1;} //不動作
+            else                                          {action=2;} //判斷陣營,選擇相對應的陣營棋子,設定inCoordinateXY
+        }                                                               //否則不動作
         else
         {
-            if(chessboard[CoordinateX][CoordinateY]==null)   {action=3;}
-            else                                           {action=4;}
-        }
+            if(chessboard[CoordinateX][CoordinateY]==null)   {action=3;} //移動
+            else                                           {action=4;} //如果起始與目的座標同陣營,則更新起始座標,但不移動
+        }                                                             //不同則移動
         return action;
     }
     public void movePiece(int endX,int endY)
@@ -186,6 +205,7 @@ public class Chessboard {
         chessboard[inCoordinateX][inCoordinateY]=null;
         inCoordinateX=999;
         inCoordinateY=999;
+        player=!player;
         System.gc();
 
     }

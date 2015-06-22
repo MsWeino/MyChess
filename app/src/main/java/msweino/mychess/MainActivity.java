@@ -69,6 +69,7 @@ public class MainActivity extends Activity {
 
         String TXT="";
         TXT+=sysClock+"\n";
+        TXT+="inX:"+chessboard.inCoordinateX + "inY:"+chessboard.inCoordinateY+"\n";
 
 //        if(butGameKEY)  {TXT+="butGameKEY:true\n";}
 //        else               {TXT+="butGameKEY:false\n";}
