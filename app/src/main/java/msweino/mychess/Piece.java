@@ -30,5 +30,6 @@ public class Piece implements IPiece{
     {this.weights=weights;}
     public int getWeights()
     {return weights;}
+    public boolean getCrown(){return false;}
 
 }

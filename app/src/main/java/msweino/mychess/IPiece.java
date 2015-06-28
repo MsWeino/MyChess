@@ -8,6 +8,7 @@ interface  IPiece {
     public void show();
     public void setImg(int image);
     public int getImg();
+    public boolean getCrown();
     public String toString();
 
 
